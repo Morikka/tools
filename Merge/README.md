@@ -6,12 +6,14 @@
 + 存在有'result.pdf'的情况
 + 增加对文件名正则表达式的支持
 + 增加将其他文件转换成pdf后合并的支持
++ 增加按照时间排序的功能
 
 ## 指南
 1. 安装python2
 2. pip install pypdf2
-3. python merge.py
+3. pip install comtypes
+4. python merge.py
 
 ## Need
 	+ pypdf2
-	
+	+ comtypes
