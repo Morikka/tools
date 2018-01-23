@@ -22,10 +22,14 @@ def handle(msg):
     if content_type == 'text':
         command = msg['text']
         if command.startswith('/money'):
-            bot.sendPhoto(chat_id,open('wx.jpg','rb'))
+            with open('wx.jpg','rb') as f:
+                bot.sendPhoto(chat_id,f)
+            f.close()
         elif command.startswith('/cat'):
             getphoto = rand()
-            bot.sendPhoto(chat_id,open('cat/'+str(getphoto)+'.jpg','rb'))
+            with open('cat/'+str(getphoto)+'.jpg','rb') as f:
+                bot.sendPhoto(chat_id,f)
+            f.close()
 
 MessageLoop(bot, handle).run_as_thread()
 
