@@ -5,7 +5,7 @@
 合成pdf - 具体内容见文件夹中的readme
 
 ## bot.py
-Telegram上的bot小程序，用来发猫猫图
+Telegram上用来发喵图的bot
 link: http://t.me/cat_needed_bot
 
 ## convert

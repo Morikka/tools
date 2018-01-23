@@ -11,7 +11,7 @@ def rand():
     ans = random.randint(0,749)
     f = 'cat/'+str(ans)+'.jpg'
     jud = os.access(f,os.F_OK)
-    print str(ans)+' '+str(jud)
+    #print str(ans)+' '+str(jud)
     if jud:
         return ans
     return rand()
