@@ -2,12 +2,12 @@ from PIL import Image, ImageFont, ImageDraw
 import os
 import imageio
 
-text = '你应该移民到：'
+text = '你應該移民到：'
 text_list = []
 font = ImageFont.truetype('fonts/simsun.ttc', 40)
 font_country = ImageFont.truetype('fonts/simsun.ttc', 80)
 
-with open('list.in', 'r') as f:
+with open('list1.in', 'r') as f:
   for word in f:
     word = word.strip('\n')
     text_list.append(word)
@@ -22,7 +22,7 @@ for i in text_list:
   brush = ImageDraw.Draw(img)
   brush.text((20,10), text, fill='#000', font=font)
   l = len(i)
-  print(l)
+  #print(l)
   if l <= 6:
     tmp = 250-80*(len(i)/2)
     brush.text((tmp,190), i, fill='#000', font=font_country)
@@ -38,13 +38,23 @@ for i in text_list:
     brush.text((tmp,280), i[12:], fill='#000', font=font_country)
   else:
     print('fuck')
-
   img.save('%s.png' % i)
 
 images = []
 
+tmp = 0
 filenames=sorted((fn for fn in os.listdir('.') if fn.endswith('.png')))
 for filename in filenames:
-    images.append(imageio.imread(filename))
+  im = Image.open(filename)
+  bg = Image.new("RGB", im.size, (255,255,255))
+  bg.paste(im,im)
+  tmp = tmp+1
+  bg.save(str(tmp)+'.jpg')
+
+filenames=sorted((fn for fn in os.listdir('.') if fn.endswith('.jpg')))
 print(filenames)
-imageio.mimsave('gif.gif', images)
+
+for filename in filenames:
+  images.append(imageio.imread(filename))
+
+imageio.mimsave('gif.gif',images)
